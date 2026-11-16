@@ -1,0 +1,6 @@
+{
+  "site_id": "obs-trace-export-4675",
+  "publish_channel": "stable",
+  "retention_days": 45,
+  "owner_team": "trace-publishing"
+}
