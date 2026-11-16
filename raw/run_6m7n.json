@@ -1,0 +1,16 @@
+{
+  "run_id": "run_6m7n",
+  "environment": "production",
+  "status": "accepted",
+  "finished_at": "2026-10-08T10:06:19Z",
+  "messages": [
+    {
+      "role": "user",
+      "text": "Summarize yesterday's flow volume without running lookups."
+    },
+    {
+      "role": "assistant",
+      "text": "Using the cached summary: 41 orders checked, 9 held, 3 backlogged."
+    }
+  ]
+}

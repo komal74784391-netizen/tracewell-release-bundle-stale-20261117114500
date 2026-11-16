@@ -1,0 +1,53 @@
+{
+  "run_id": "run_2e3f",
+  "environment": "production",
+  "status": "discarded",
+  "finished_at": "2026-10-04T09:05:12Z",
+  "messages": [
+    {
+      "role": "user",
+      "text": "Quick check on SO-90004 before the ticket gets closed."
+    },
+    {
+      "role": "tool",
+      "name": "order_lookup",
+      "content": [
+        {
+          "name": "order_lookup",
+          "results": {
+            "order_id": "SO-90004",
+            "status": "delivered",
+            "channel": "phone",
+            "warehouse": "WH-WEST",
+            "created_at": "2026-09-18T10:11:04Z",
+            "items": [
+              {
+                "sku": "KB-3305",
+                "qty": 1
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "role": "assistant",
+      "text": "Pull the customer record as well so the ticket can be annotated."
+    },
+    {
+      "role": "tool",
+      "name": "customer_profile",
+      "content": [
+        {
+          "name": "customer_profile",
+          "results": {
+            "customer_id": "CU-7710",
+            "tier": "gold",
+            "open_tickets": 2,
+            "region": "north-america"
+          }
+        }
+      ]
+    }
+  ]
+}

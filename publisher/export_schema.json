@@ -1,0 +1,21 @@
+{
+  "output_path": "exports/merged_tool_returns.json",
+  "description": "Flattened list of publishable tool returns. One record per tool-return message in a publishable run.",
+  "record": {
+    "run_id": "string",
+    "message_index": "integer, 0-based index inside the run's messages array",
+    "tool_name": "string, the name carried by the tool message",
+    "content": "string holding the tool return exactly as captured in the source run"
+  },
+  "ordering": [
+    "run_id ascending",
+    "message_index ascending"
+  ],
+  "example": {
+    "run_id": "demo-run-0007",
+    "message_index": 2,
+    "tool_name": "catalog_lookup",
+    "content": "[{\"name\": \"catalog_lookup\", \"results\": {\"items\": [{\"sku\": \"PL-8812\", \"qty\": 2}], \"total\": 1}}]"
+  },
+  "example_note": "The example is illustrative and is not part of the captured set."
+}

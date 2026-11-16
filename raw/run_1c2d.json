@@ -1,0 +1,67 @@
+{
+  "run_id": "run_1c2d",
+  "environment": "production",
+  "status": "accepted",
+  "finished_at": "2026-10-03T11:42:57Z",
+  "messages": [
+    {
+      "role": "user",
+      "text": "A customer asked for a refund on SO-90117. Which policy applies and how much is it?"
+    },
+    {
+      "role": "tool",
+      "name": "policy_search",
+      "content": [
+        {
+          "name": "policy_search",
+          "results": {
+            "query": "refund window",
+            "source": "knowledge_base",
+            "matches": [
+              {
+                "policy_id": "RET-04",
+                "title": "Damaged item refund",
+                "window_days": 30
+              },
+              {
+                "policy_id": "RET-07",
+                "title": "Goodwill refund",
+                "window_days": 90
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "role": "assistant",
+      "text": "The damaged-item policy applies. I will compute the eligible amount."
+    },
+    {
+      "role": "tool",
+      "name": "refund_calc",
+      "content": [
+        {
+          "name": "refund_calc",
+          "results": {
+            "order_id": "SO-90117",
+            "eligible": true,
+            "gross": 184.5,
+            "shipping_refund": 9.95,
+            "currency": "USD",
+            "breakdown": [
+              {
+                "line": "BR-2210",
+                "amount": 129.0
+              },
+              {
+                "line": "SN-7714",
+                "amount": 55.5
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

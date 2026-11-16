@@ -1,0 +1,112 @@
+{
+  "run_id": "run_5k6l",
+  "environment": "production",
+  "status": "accepted",
+  "finished_at": "2026-10-07T16:22:36Z",
+  "messages": [
+    {
+      "role": "user",
+      "text": "VIP customer is blocked by a partial order; resolve and open a follow-up ticket."
+    },
+    {
+      "role": "tool",
+      "name": "customer_profile",
+      "content": [
+        {
+          "name": "customer_profile",
+          "results": {
+            "customer_id": "CU-9931",
+            "tier": "platinum",
+            "region": "emea",
+            "open_tickets": 1,
+            "preferences": {
+              "carrier": "express",
+              "contact": "email"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "role": "assistant",
+      "text": "Checking the order that is stuck in the EMEA queue."
+    },
+    {
+      "role": "tool",
+      "name": "order_lookup",
+      "content": [
+        {
+          "name": "order_lookup",
+          "results": {
+            "order_id": "SO-91002",
+            "status": "partially_fulfilled",
+            "channel": "partner",
+            "warehouse": "WH-EMEA",
+            "created_at": "2026-10-05T08:39:20Z",
+            "items": [
+              {
+                "sku": "TR-9920",
+                "qty": 2,
+                "fulfilled": 1
+              },
+              {
+                "sku": "LM-4418",
+                "qty": 1,
+                "fulfilled": 0
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "role": "assistant",
+      "text": "LM-4418 is the missing line; verifying availability."
+    },
+    {
+      "role": "tool",
+      "name": "inventory_check",
+      "content": [
+        {
+          "name": "inventory_check",
+          "results": {
+            "warehouse": "WH-EMEA",
+            "checked_at": "2026-10-07T16:22:58Z",
+            "skus": [
+              {
+                "sku": "LM-4418",
+                "on_hand": 7,
+                "reserved": 7,
+                "available": 0
+              }
+            ],
+            "backorder_eta": "2026-10-21"
+          }
+        }
+      ]
+    },
+    {
+      "role": "assistant",
+      "text": "Creating a follow-up ticket for the backordered line."
+    },
+    {
+      "role": "tool",
+      "name": "ticket_create",
+      "content": [
+        {
+          "name": "ticket_create",
+          "results": {
+            "ticket_id": "TCK-55871",
+            "priority": "high",
+            "assignee": "supply-ops",
+            "tags": [
+              "backorder",
+              "vip"
+            ],
+            "created": true
+          }
+        }
+      ]
+    }
+  ]
+}

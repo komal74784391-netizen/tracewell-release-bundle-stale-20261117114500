@@ -1,0 +1,59 @@
+{
+  "run_id": "run_3g4h",
+  "environment": "sandbox",
+  "status": "accepted",
+  "finished_at": "2026-10-05T14:31:08Z",
+  "messages": [
+    {
+      "role": "user",
+      "text": "Sandbox replay of the stuck-order flow for SO-88421."
+    },
+    {
+      "role": "tool",
+      "name": "order_lookup",
+      "content": [
+        {
+          "name": "order_lookup",
+          "results": {
+            "order_id": "SO-88421",
+            "status": "on_hold",
+            "channel": "web",
+            "warehouse": "WH-EAST",
+            "created_at": "2026-09-29T16:03:11Z",
+            "items": [
+              {
+                "sku": "BR-2210",
+                "qty": 3
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "role": "assistant",
+      "text": "Replaying the inventory step with the sandbox snapshot."
+    },
+    {
+      "role": "tool",
+      "name": "inventory_check",
+      "content": [
+        {
+          "name": "inventory_check",
+          "results": {
+            "warehouse": "WH-EAST",
+            "checked_at": "2026-10-05T14:31:40Z",
+            "skus": [
+              {
+                "sku": "BR-2210",
+                "on_hand": 5,
+                "reserved": 5,
+                "available": 0
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

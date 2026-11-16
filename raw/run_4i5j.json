@@ -1,0 +1,36 @@
+{
+  "run_id": "run_4i5j",
+  "environment": "production",
+  "status": "draft",
+  "finished_at": "2026-10-06T07:58:44Z",
+  "messages": [
+    {
+      "role": "user",
+      "text": "Draft notes for the returns policy refresh."
+    },
+    {
+      "role": "tool",
+      "name": "policy_search",
+      "content": [
+        {
+          "name": "policy_search",
+          "results": {
+            "query": "return window",
+            "source": "knowledge_base",
+            "matches": [
+              {
+                "policy_id": "RET-12",
+                "title": "Seasonal return extension",
+                "window_days": 45
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "role": "assistant",
+      "text": "Draft only; needs review before publication."
+    }
+  ]
+}

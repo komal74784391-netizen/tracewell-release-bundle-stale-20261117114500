@@ -1,0 +1,92 @@
+{
+  "run_id": "run_0a1b",
+  "environment": "production",
+  "status": "accepted",
+  "finished_at": "2026-10-02T08:16:03Z",
+  "messages": [
+    {
+      "role": "user",
+      "text": "Order SO-88421 still shows no tracking. What is blocking it?"
+    },
+    {
+      "role": "assistant",
+      "text": "I will check the order state, stock availability and shipment record."
+    },
+    {
+      "role": "tool",
+      "name": "order_lookup",
+      "content": [
+        {
+          "name": "order_lookup",
+          "results": {
+            "order_id": "SO-88421",
+            "status": "on_hold",
+            "channel": "web",
+            "warehouse": "WH-EAST",
+            "created_at": "2026-09-29T16:03:11Z",
+            "items": [
+              {
+                "sku": "BR-2210",
+                "qty": 3
+              },
+              {
+                "sku": "SN-7714",
+                "qty": 1
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "role": "assistant",
+      "text": "The order is on hold at WH-EAST; I will verify inventory."
+    },
+    {
+      "role": "tool",
+      "name": "inventory_check",
+      "content": [
+        {
+          "name": "inventory_check",
+          "results": {
+            "warehouse": "WH-EAST",
+            "checked_at": "2026-10-02T08:14:52Z",
+            "skus": [
+              {
+                "sku": "BR-2210",
+                "on_hand": 12,
+                "reserved": 12,
+                "available": 0
+              },
+              {
+                "sku": "SN-7714",
+                "on_hand": 4,
+                "reserved": 1,
+                "available": 3
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "role": "assistant",
+      "text": "BR-2210 has zero available units; I will check whether a label exists."
+    },
+    {
+      "role": "tool",
+      "name": "shipment_track",
+      "content": [
+        {
+          "name": "shipment_track",
+          "results": {
+            "tracking_number": null,
+            "carrier": null,
+            "status": "not_dispatched",
+            "eta": null
+          }
+        }
+      ]
+    }
+  ]
+}
