@@ -1,6 +1,17 @@
 {
-  "site_id": "obs-trace-export-4675",
-  "publish_channel": "stable",
-  "retention_days": 45,
-  "owner_team": "trace-publishing"
+  "site_id": "tracewell-capture-archive-4675",
+  "display_name": "Tracewell Release Publishing",
+  "cycle": "2026-11-13",
+  "archive_repository": "komal74784391-netizen/tracewell-capture-archive-4675",
+  "bundle_repository_name": "tracewell-release-bundle-4675",
+  "bundle_default_branch": "main",
+  "starter_repository": "githubtraining/hello-github-actions",
+  "publishable_status": "accepted",
+  "publishable_environment": "production",
+  "blocked_tools": [
+    "ledger_admin",
+    "operations_override",
+    "ops_override"
+  ],
+  "retention_days": 45
 }
